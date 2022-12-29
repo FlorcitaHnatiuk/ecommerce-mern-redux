@@ -18,7 +18,6 @@ const data = {
     ],
     products: [
         {
-            _id: '1',
             name: 'Vans Old Skool',
             category: 'Sneakers',
             image: '/images/vans_001.jpeg',
@@ -30,7 +29,6 @@ const data = {
             description: 'high quality product',
         },
         {
-            _id: '2',
             name: 'Nike Air Max Furyosa',
             category: 'Sneakers',
             image: '/images/nike_001.jpeg',
@@ -42,7 +40,6 @@ const data = {
             description: 'high quality product',
         },
         {
-            _id: '3',
             name: 'Nike Air Force 1 07 Se',
             category: 'Sneakers',
             image: '/images/nike_002.jpeg',
@@ -54,7 +51,6 @@ const data = {
             description: 'high quality product',
         },
         {
-            _id: '4',
             name: 'Nike Air Huarache',
             category: 'Sneakers',
             image: '/images/nike_003.jpeg',
@@ -66,7 +62,6 @@ const data = {
             description: 'high quality product',
         },
         {
-            _id: '5',
             name: 'Nike Waffle One Se',
             category: 'Sneakers',
             image: '/images/nike_004.jpeg',
@@ -78,7 +73,6 @@ const data = {
             description: 'high quality product',
         },
         {
-            _id: '6',
             name: 'adidas Multix',
             category: 'Sneakers',
             image: '/images/adidas_001.jpeg',
@@ -90,7 +84,6 @@ const data = {
             description: 'high quality product',
         },
         {
-            _id: '7',
             name: 'Nike Air Max Pre-Day Se',
             category: 'Sneakers',
             image: '/images/nike_005.jpeg',
@@ -102,7 +95,6 @@ const data = {
             description: 'high quality product',
         },
         {
-            _id: '8',
             name: 'Nike Air Huarache Se',
             category: 'Sneakers',
             image: '/images/nike_006.jpeg',
