@@ -50,9 +50,7 @@ h2 {
 }
 a {
   text-decoration: none;
-}
-a:hover {
-  color: #ff8000;
+  color: black;
 }
 ul {
   padding: 0;
@@ -86,15 +84,20 @@ button.primary {
   background-color: grey;
   color: white;
 }
-button.secondary {
-  background-color: orange;
-  color: white;
-  border: none !important;
-}
 button.block {
   width: 100%;
 }
-
+button.delete {
+  background-color: #e26e6c;
+  color: white;
+  border: none !important;
+}
+.bold {
+  font-weight: bold;
+}
+.text-center {
+  text-align: center;
+}
 /* Header */
 header a {
   color: #ffffff;
@@ -165,6 +168,14 @@ img.large {
 }
 .price {
   font-size: 2rem;
+}
+.product-stamp {
+  background-color: #e26e6c;
+  color: #fff;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 3px;
+  text-transform: uppercase;
 }
 /* Rating */
 .rating span {

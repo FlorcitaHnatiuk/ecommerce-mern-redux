@@ -52,6 +52,9 @@ export default function ProductScreen(props) {
                                     Description:
                                     <p>{product.description}</p>
                                 </li>
+                                <li>
+                                <span className="product-stamp">Free Shipping</span>
+                            </li>
                             </ul>
                         </div>
                         <div className="col-1">
