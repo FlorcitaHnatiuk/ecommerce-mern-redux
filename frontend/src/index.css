@@ -191,6 +191,10 @@ rating span:last-child {
 .danger {
   color: #a02020;
 }
+.loading {
+  display: block !important;
+
+}
 .alert {
   padding: 1rem;
   border: 0.1rem solid transparent;
@@ -217,7 +221,6 @@ rating span:last-child {
 }
 .form label {
   margin: 1rem 0;
-  display: block;
 }
 
 /* Dropdown */
@@ -239,4 +242,17 @@ rating span:last-child {
 }
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+/* Checkout Steps */
+.checkout-steps > div {
+  border-top: 0.3rem #c0c0c0 solid;
+  color: #c0c0c0;
+  flex: 1;
+  padding: 1rem;
+  font-weight: bold;
+}
+.checkout-steps > div.active {
+  border-top-color: #f08000;
+  color: #f08000;
 }
