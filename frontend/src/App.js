@@ -1,16 +1,17 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Link, Route } from 'react-router-dom';
+import { signout } from './actions/userActions';
 import CartScreen from './screens/CartScreen';
 import HomeScreen from './screens/HomeScreen';
-import ProductScreen from './screens/ProductScreen';
-import SigninScreen from './screens/SigninScreen';
-import RegisterScreen from './screens/RegisterScreen';
-import ShippingAddressScreen from './screens/ShippingAddressScreen';
+import OrderHistoryScreen from './screens/OrderHistoryScreen';
+import OrderScreen from './screens/OrderScreen';
 import PaymentMethodScreen from './screens/PaymentMethodScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
-import OrderScreen from './screens/OrderScreen';
-import { signout } from './actions/userActions';
+import ProductScreen from './screens/ProductScreen';
+import RegisterScreen from './screens/RegisterScreen';
+import ShippingAddressScreen from './screens/ShippingAddressScreen';
+import SigninScreen from './screens/SigninScreen';
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -21,14 +22,13 @@ function App() {
   const signoutHandler = () => {
     dispatch(signout());
   };
-
   return (
     <BrowserRouter>
       <div className="grid-container">
         <header className="row">
           <div>
             <Link className="brand" to="/">
-              MOOV
+              amazona
             </Link>
           </div>
           <div>
@@ -44,6 +44,9 @@ function App() {
                   {userInfo.name} <i className="fa fa-caret-down"></i>{' '}
                 </Link>
                 <ul className="dropdown-content">
+                  <li>
+                    <Link to="/orderhistory">Order History</Link>
+                  </li>
                   <li>
                     <Link to="#signout" onClick={signoutHandler}>
                       Sign Out
@@ -65,9 +68,10 @@ function App() {
           <Route path="/payment" component={PaymentMethodScreen}></Route>
           <Route path="/placeorder" component={PlaceOrderScreen}></Route>
           <Route path="/order/:id" component={OrderScreen}></Route>
+          <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
-        <footer className="row center">Coded with ♥ by Flor Hnatiuk</footer>
+        <footer className="row center">All right reserved</footer>
       </div>
     </BrowserRouter>
   );
