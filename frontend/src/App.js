@@ -28,7 +28,7 @@ function App() {
         <header className="row">
           <div>
             <Link className="brand" to="/">
-              amazona
+              MOOV
             </Link>
           </div>
           <div>
@@ -71,7 +71,7 @@ function App() {
           <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
-        <footer className="row center">All right reserved</footer>
+        <footer className="row center">Coded with ♥ by Flor</footer>
       </div>
     </BrowserRouter>
   );
