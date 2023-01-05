@@ -38,7 +38,7 @@ function App() {
         <header className="row">
           <div>
             <Link className="brand" to="/">
-              amazona
+              MOOV
             </Link>
           </div>
           <div>
@@ -154,7 +154,7 @@ function App() {
 
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
-        <footer className="row center">All right reserved</footer>
+        <footer className="row center">Coded with ♥ by Flor Hnatiuk</footer>
       </div>
     </BrowserRouter>
   );
