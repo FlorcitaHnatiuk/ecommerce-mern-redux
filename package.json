@@ -6,8 +6,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "predeploy": "cd frontend && npm install && npm run build",
-    "deploy": "gh-pages -d build",
+    "build": "cd frontend && npm install && npm run build",
     "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
   },
   "repository": {
@@ -33,5 +32,6 @@
     "eslint-plugin-react": "^7.31.11",
     "gh-pages": "^4.0.0",
     "nodemon": "^2.0.20"
-  }
+  },
+  "engines": { "node": "16.13.0", "npm": "8.1.0"}
 }
