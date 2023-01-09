@@ -1,11 +1,13 @@
 {
+  "homepage": "https://github.com/FlorcitaHnatiuk/ecommerce-mern-redux",
   "name": "ecommerce-redux",
   "type": "module",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cd frontend && npm install && npm run build",
+    "predeploy": "cd frontend && npm install && npm run build",
+    "deploy": "gh-pages -d build",
     "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
   },
   "repository": {
@@ -17,7 +19,6 @@
   "bugs": {
     "url": "https://github.com/FlorcitaHnatiuk/ecommerce-mern-redux/issues"
   },
-  "homepage": "https://github.com/FlorcitaHnatiuk/ecommerce-mern-redux#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.3",
@@ -30,6 +31,7 @@
   "devDependencies": {
     "eslint": "^8.30.0",
     "eslint-plugin-react": "^7.31.11",
+    "gh-pages": "^4.0.0",
     "nodemon": "^2.0.20"
   }
 }
