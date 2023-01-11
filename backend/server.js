@@ -18,11 +18,6 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
 }).catch(err => {
     console.error('Cannot connect')
 })
-/* mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/moov', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true, 
-}); */
 
 app.use('/api/uploads', uploadRouter);
 app.use('/api/users', userRouter);
@@ -42,9 +37,6 @@ app.use(express.static(path.join(__dirname, '/frontend/build')));
 app.get('*', (req, res) =>
     res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
 );
-/* app.get('/', (req, res) => {
-    res.send('Server is ready');
-}); */
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
