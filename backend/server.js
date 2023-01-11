@@ -6,6 +6,10 @@ import orderRouter from './routers/orderRouter.js';
 import uploadRouter from './routers/uploadRouter.js';
 import dotenv from 'dotenv';
 import path from 'path';
+import cluster from 'node:cluster';
+import { cpus } from 'node:os';
+import process from 'node:process';
+import logger from "./logger.js";
 
 dotenv.config();
 const app = express();
@@ -14,9 +18,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect(process.env.MONGODB_URI).then(() => {
-    console.log('Connected to db')
+    logger.info('Connected to db')
 }).catch(err => {
-    console.error('Cannot connect')
+    logger.error('Cannot connect')
 })
 
 app.use('/api/uploads', uploadRouter);
@@ -38,7 +42,24 @@ app.get('*', (req, res) =>
     res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
 );
 
-const port = process.env.PORT || 5000;
-app.listen(port, () => {
-    console.log(`Serve at http://localhost:${port}`);
-});
+const numOfCpus = cpus().length
+
+if (cluster.isPrimary) {
+    logger.info(`Number of cpus is ${numOfCpus}`)
+    logger.info(`Primary ${process.pid} is running`)
+    for (let i = 0; i < numOfCpus; i++) {
+        cluster.fork();
+    }
+    cluster.on('exit', (worker) => {
+        logger.warn(`Worker ${worker.process.pid} died`, new Date().toLocaleString())
+        cluster.fork()
+    })
+} else {
+    const port = parseInt(process.argv[2]) || 5000;
+    app.get('/', (req, res) => {
+        res.send(`Worker on port ${port} - <b>PID ${process.pid}</b> - ${new Date().toLocaleString()}`)
+    })
+    app.listen(port, err => {
+        if (!err) { logger.info(`Worker on port ${port} - PID worker ${process.pid}`) }
+    })
+}
