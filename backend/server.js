@@ -13,11 +13,16 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/moov', {
+mongoose.connect(process.env.MONGODB_URI).then(() => {
+    console.log('Connected to db')
+}).catch(err => {
+    console.error('Cannot connect')
+})
+/* mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/moov', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    // useCreateIndex: true, 
-});
+    useCreateIndex: true, 
+}); */
 
 app.use('/api/uploads', uploadRouter);
 app.use('/api/users', userRouter);
