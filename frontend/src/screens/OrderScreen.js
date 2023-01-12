@@ -82,7 +82,7 @@ export default function OrderScreen(props) {
           <ul>
             <li>
               <div className="card card-body">
-                <h2>Shippring</h2>
+                <h2>Shipping</h2>
                 <p>
                   <strong>Name:</strong> {order.shippingAddress.fullName} <br />
                   <strong>Address: </strong> {order.shippingAddress.address},
@@ -107,7 +107,7 @@ export default function OrderScreen(props) {
                 </p>
                 {order.isPaid ? (
                   <MessageBox variant="success">
-                    Paid at {order.paidAt}
+                    Paid 
                   </MessageBox>
                 ) : (
                   <MessageBox variant="danger">Not Paid</MessageBox>

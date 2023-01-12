@@ -46,7 +46,7 @@ export default function HomeScreen() {
           </Carousel>
         </>
       )}
-      <h2 className="text-center">Featured Products</h2>
+      <h2 className="text-center">All our products</h2>
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
