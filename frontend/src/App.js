@@ -234,7 +234,10 @@ function App() {
 
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
-        <footer className="row center">Coded with ♥ by Flor Hnatiuk</footer>
+        
+        <footer className="row center">
+          <p>Coded with ♥ by Flor Hnatiuk</p>
+        </footer>
       </div>
     </BrowserRouter>
   );
