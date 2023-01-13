@@ -27,6 +27,7 @@ import SearchScreen from './screens/SearchScreen';
 import { listProductCategories } from './actions/productActions';
 import LoadingBox from './components/LoadingBox';
 import MessageBox from './components/MessageBox';
+import DashboardScreen from './screens/DashboardScreen';
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -61,7 +62,7 @@ function App() {
               <i className="fa fa-bars"></i>
             </button>
             <Link className="brand" to="/">
-              amazona
+              MOOV
             </Link>
           </div>
           <div>
@@ -228,6 +229,10 @@ function App() {
             path="/user/:id/edit"
             component={UserEditScreen}
           ></AdminRoute>
+          <AdminRoute
+          path="/dashboard"
+          component={DashboardScreen}
+        ></AdminRoute>
           <SellerRoute
             path="/productlist/seller"
             component={ProductListScreen}
@@ -239,7 +244,7 @@ function App() {
 
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
-        <footer className="row center">All right reserved</footer>
+        <footer className="row center">Coded with ♥ by Flor Hnatiuk</footer>
       </div>
     </BrowserRouter>
   );
