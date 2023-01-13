@@ -6,11 +6,14 @@ import { detailsUser, updateUser } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { USER_UPDATE_RESET } from '../constants/userConstants';
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 
 export default function UserEditScreen(props) {
   const userId = props.match.params.id;
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [telephone, setTelephone] = useState('');
   const [isSeller, setIsSeller] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
 
@@ -81,6 +84,11 @@ export default function UserEditScreen(props) {
                 onChange={(e) => setEmail(e.target.value)}
               ></input>
             </div>
+            <label for="telephone">Select your country and add your telephone number</label>
+            <PhoneInput
+              placeholder="Enter phone number"
+              value={telephone}
+              onChange={setTelephone} />
             <div>
               <label htmlFor="isSeller">Is Seller</label>
               <input

@@ -36,6 +36,7 @@ userRouter.post(
           _id: user._id,
           name: user.name,
           email: user.email,
+          telephone: user.telephone,
           isAdmin: user.isAdmin,
           isSeller: user.isSeller,
           token: generateToken(user),
@@ -53,6 +54,7 @@ userRouter.post(
     const user = new User({
       name: req.body.name,
       email: req.body.email,
+      telephone: req.body.telephone,
       password: bcrypt.hashSync(req.body.password, 8),
     });
     const createdUser = await user.save();
@@ -60,6 +62,7 @@ userRouter.post(
       _id: createdUser._id,
       name: createdUser.name,
       email: createdUser.email,
+      telephone: createdUser.telephone,
       isAdmin: createdUser.isAdmin,
       isSeller: user.isSeller,
       token: generateToken(createdUser),
@@ -86,9 +89,11 @@ userRouter.put(
     if (user) {
       user.name = req.body.name || user.name;
       user.email = req.body.email || user.email;
+      user.telephone = req.body.telephone || user.telephone;
       if (user.isSeller) {
         user.seller.name = req.body.sellerName || user.seller.name;
         user.seller.logo = req.body.sellerLogo || user.seller.logo;
+        user.seller.telephone = req.body.sellerTelephone || user.seller.telephone;
         user.seller.description =
           req.body.sellerDescription || user.seller.description;
       }
@@ -100,6 +105,7 @@ userRouter.put(
         _id: updatedUser._id,
         name: updatedUser.name,
         email: updatedUser.email,
+        telephone: updatedUser.telephone,
         isAdmin: updatedUser.isAdmin,
         isSeller: user.isSeller,
         token: generateToken(updatedUser),
@@ -146,8 +152,9 @@ userRouter.put(
     if (user) {
       user.name = req.body.name || user.name;
       user.email = req.body.email || user.email;
-      user.isSeller = req.body.isSeller || user.isSeller;
-      user.isAdmin = req.body.isAdmin || user.isAdmin;
+      user.telephone = req.body.telephone || user.telephone;
+      user.isSeller = Boolean(req.body.isSeller);
+      user.isAdmin = Boolean(req.body.isAdmin);
       const updatedUser = await user.save();
       res.send({ message: 'User Updated', user: updatedUser });
     } else {

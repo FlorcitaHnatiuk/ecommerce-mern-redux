@@ -4,10 +4,13 @@ import { detailsUser, updateUserProfile } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 
 export default function ProfileScreen() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [telephone, setTelephone] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [sellerName, setSellerName] = useState('');
@@ -32,6 +35,7 @@ export default function ProfileScreen() {
     } else {
       setName(user.name);
       setEmail(user.email);
+      setTelephone(user.telephone);
       if (user.seller) {
         setSellerName(user.seller.name);
         setSellerLogo(user.seller.logo);
@@ -50,6 +54,7 @@ export default function ProfileScreen() {
           userId: user._id,
           name,
           email,
+          telephone,
           password,
           sellerName,
           sellerLogo,
@@ -99,6 +104,11 @@ export default function ProfileScreen() {
                 onChange={(e) => setEmail(e.target.value)}
               ></input>
             </div>
+            <label for="telephone">Select your country and add your telephone number</label>
+            <PhoneInput
+              placeholder="Enter phone number"
+              value={telephone}
+              onChange={setTelephone} />
             <div>
               <label htmlFor="password">Password</label>
               <input

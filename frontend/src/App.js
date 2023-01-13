@@ -61,7 +61,7 @@ function App() {
               <i className="fa fa-bars"></i>
             </button>
             <Link className="brand" to="/">
-              MOOV
+              amazona
             </Link>
           </div>
           <div>
@@ -200,7 +200,7 @@ function App() {
             exact
           ></Route>
           <Route
-            path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order"
+            path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order/pageNumber/:pageNumber"
             component={SearchScreen}
             exact
           ></Route>
@@ -210,6 +210,11 @@ function App() {
           ></PrivateRoute>
           <AdminRoute
             path="/productlist"
+            component={ProductListScreen}
+            exact
+          ></AdminRoute>
+          <AdminRoute
+            path="/productlist/pageNumber/:pageNumber"
             component={ProductListScreen}
             exact
           ></AdminRoute>
@@ -234,10 +239,7 @@ function App() {
 
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
-        
-        <footer className="row center">
-          <p>Coded with ♥ by Flor Hnatiuk</p>
-        </footer>
+        <footer className="row center">All right reserved</footer>
       </div>
     </BrowserRouter>
   );
