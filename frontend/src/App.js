@@ -28,6 +28,7 @@ import { listProductCategories } from './actions/productActions';
 import LoadingBox from './components/LoadingBox';
 import MessageBox from './components/MessageBox';
 import DashboardScreen from './screens/DashboardScreen';
+import MapScreen from './screens/MapScreen';
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -233,6 +234,7 @@ function App() {
           path="/dashboard"
           component={DashboardScreen}
         ></AdminRoute>
+        <PrivateRoute path="/map" component={MapScreen}></PrivateRoute>
           <SellerRoute
             path="/productlist/seller"
             component={ProductListScreen}

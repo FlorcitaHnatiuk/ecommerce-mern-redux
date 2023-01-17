@@ -30,7 +30,9 @@ app.use('/api/orders', orderRouter);
 app.get('/api/config/paypal', (req, res) => {
     res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
 });
-
+app.get('/api/config/google', (req, res) => {
+    res.send(process.env.GOOGLE_API_KEY || '');
+});
 app.use((err, req, res, next) => {
     res.status(500).send({ message: err.message });
 });

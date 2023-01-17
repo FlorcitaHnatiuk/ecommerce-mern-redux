@@ -5,7 +5,7 @@ const data = {
     users: [
         {
             name: 'Florencia',
-            email: 'flopy.scio@gmail.com',
+            email: 'flopi.hnatiuk@gmail.com',
             password: bcrypt.hashSync('1234', 8),
             isAdmin: true,
             isSeller: true,
@@ -16,6 +16,13 @@ const data = {
             password: bcrypt.hashSync('1234', 8),
             isAdmin: false,
             isSeller: true,
+        },
+        {
+            name: 'Emmanuel',
+            email: 'emmanuel.sanabria@gmail.com',
+            password: bcrypt.hashSync('1234', 8),
+            isAdmin: false,
+            isSeller: false,
         },
     ],
     products: [
