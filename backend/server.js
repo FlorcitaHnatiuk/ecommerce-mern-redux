@@ -17,6 +17,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+mongoose.set('strictQuery', false)
 mongoose.connect(process.env.MONGODB_URI).then(() => {
     logger.info('Connected to db')
 }).catch(err => {
