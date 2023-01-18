@@ -58,7 +58,7 @@ if (cluster.isPrimary) {
         cluster.fork()
     })
 } else {
-    const port = parseInt(process.argv[2]) || 5000;
+    const port = (process.env.PORT || 5000)
     app.get('/', (req, res) => {
         res.send(`Worker on port ${port} - <b>PID ${process.pid}</b> - ${new Date().toLocaleString()}`)
     })
