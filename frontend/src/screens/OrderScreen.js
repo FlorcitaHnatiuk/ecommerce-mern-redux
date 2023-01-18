@@ -193,7 +193,7 @@ export default function OrderScreen(props) {
                         <MessageBox variant="danger">{errorPay}</MessageBox>
                       )}
                       {loadingPay && <LoadingBox></LoadingBox>}
-                      <PayPalScriptProvider options={{ "client-id": "test" }}>
+                      <PayPalScriptProvider>
                       <PayPalButtons
                         amount={order.totalPrice}
                         onSuccess={successPaymentHandler}

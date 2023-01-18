@@ -80,16 +80,16 @@ export const payOrderEmailTemplate = (order) => {
   </thead>
   <tbody>
   ${order.orderItems
-    .map(
-      (item) => `
+      .map(
+        (item) => `
     <tr>
     <td>${item.name}</td>
     <td align="center">${item.qty}</td>
     <td align="right"> $${item.price.toFixed(2)}</td>
     </tr>
   `
-    )
-    .join('\n')}
+      )
+      .join('\n')}
   </tbody>
   <tfoot>
   <tr>
