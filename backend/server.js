@@ -5,6 +5,8 @@ import productRouter from './routers/productRouter.js';
 import orderRouter from './routers/orderRouter.js';
 import uploadRouter from './routers/uploadRouter.js';
 import dotenv from 'dotenv';
+import compression from 'compression';
+import morgan from 'morgan';
 import path from 'path';
 import cluster from 'node:cluster';
 import { cpus } from 'node:os';
@@ -13,7 +15,9 @@ import logger from "./logger.js";
 
 dotenv.config();
 const app = express();
-
+const numOfCpus = cpus().length
+app.use(compression());
+app.use(morgan('tiny'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -45,10 +49,15 @@ app.get('*', (req, res) =>
     res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
 );
 
-const numOfCpus = cpus().length
+process.on('SIGINT', function () {
+    mongoose.connection.close(function () {
+        logger.info('Mongoose disconnected on app termination');
+        process.exit(0);
+    });
+});
 
 if (cluster.isPrimary) {
-    logger.info(`Number of cpus is ${numOfCpus}`)
+    logger.info(`CPUs: ${numOfCpus}`)
     logger.info(`Primary ${process.pid} is running`)
     for (let i = 0; i < numOfCpus; i++) {
         cluster.fork();
