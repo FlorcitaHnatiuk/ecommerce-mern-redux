@@ -5,6 +5,7 @@ import productRouter from './routers/productRouter.js';
 import orderRouter from './routers/orderRouter.js';
 import uploadRouter from './routers/uploadRouter.js';
 import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
 import compression from 'compression';
 import morgan from 'morgan';
 import path from 'path';
@@ -18,8 +19,8 @@ const app = express();
 const numOfCpus = cpus().length
 app.use(compression());
 app.use(morgan('tiny'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.set('strictQuery', false)
 mongoose.connect(process.env.MONGODB_URI).then(() => {
@@ -32,6 +33,7 @@ app.use('/api/uploads', uploadRouter);
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
 app.use('/api/orders', orderRouter);
+
 app.get('/api/config/paypal', (req, res) => {
     res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
 });
