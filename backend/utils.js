@@ -62,7 +62,7 @@ export const isSellerOrAdmin = (req, res, next) => {
 export const mailgun = () =>
   mg({
     apiKey: process.env.MAILGUN_API_KEY,
-    domain: process.env.MAILGUN_DOMAIN,
+    domain: process.env.MAILGUN_DOMIAN,
   });
 
 export const payOrderEmailTemplate = (order) => {
@@ -80,16 +80,16 @@ export const payOrderEmailTemplate = (order) => {
   </thead>
   <tbody>
   ${order.orderItems
-      .map(
-        (item) => `
+    .map(
+      (item) => `
     <tr>
     <td>${item.name}</td>
     <td align="center">${item.qty}</td>
     <td align="right"> $${item.price.toFixed(2)}</td>
     </tr>
   `
-      )
-      .join('\n')}
+    )
+    .join('\n')}
   </tbody>
   <tfoot>
   <tr>
@@ -124,7 +124,6 @@ export const payOrderEmailTemplate = (order) => {
   <hr/>
   <p>
   Thanks for shopping with us.
-  | MOOV TEAM |
   </p>
   `;
 };

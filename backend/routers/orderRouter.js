@@ -1,7 +1,6 @@
 import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import Order from '../models/orderModel.js';
-import logger from "../../backend/logger.js";
 import {
   isAdmin,
   isAuth,
@@ -96,16 +95,16 @@ orderRouter.put(
         .messages()
         .send(
           {
-            from: 'Moov <moov@sandboxf032b7289c1e47f6b864f2df193c15b6.mailgun.org>',
+            from: 'MOOV <moov@mg.yourdomain.com>',
             to: `${order.user.name} <${order.user.email}>`,
             subject: `New order ${order._id}`,
             html: payOrderEmailTemplate(order),
           },
           (error, body) => {
             if (error) {
-              logger.error(error);
+              console.log(error);
             } else {
-              logger.info(body);
+              console.log(body);
             }
           }
         );
