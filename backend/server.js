@@ -79,6 +79,7 @@ if (cluster.isPrimary) {
         if (!err) { logger.info(`Worker on port ${port} - PID worker ${process.pid}`) }
     })
 }
+
 const httpServer = http.Server(app);
 const io = new Server(httpServer, { cors: { origin: '*' } });
 const users = [];
