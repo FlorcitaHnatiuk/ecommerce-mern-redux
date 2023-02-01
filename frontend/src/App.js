@@ -65,7 +65,7 @@ function App() {
               <i className="fa fa-bars"></i>
             </button>
             <Link className="brand" to="/">
-              amazona
+              MOOV
             </Link>
           </div>
           <div>
@@ -254,9 +254,15 @@ function App() {
 
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
-        <footer className="row center">
+        <footer>
+          <div className="row center"><a className="letterWhite" href="https://www.linkedin.com/in/florenciahnatiuk/">
+            LINKEDIN
+          </a>
+            <a className="letterWhite" href="https://github.com/FlorcitaHnatiuk">
+              GITHUB
+            </a></div>
           {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
-          <div>Coded with ♥ by Flor Hnatiuk</div>{' '}
+          <div className="row center">Coded with ♥ by Flor Hnatiuk</div>{' '}
         </footer>
       </div>
     </BrowserRouter>

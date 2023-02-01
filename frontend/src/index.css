@@ -483,3 +483,7 @@ button.close-sidebar {
 .support-users .unread {
   background-color: #f02020;
 }
+.letterWhite {
+  color: white;
+  margin: 0.4rem;
+}
