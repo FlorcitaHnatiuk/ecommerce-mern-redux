@@ -18,7 +18,7 @@ describe("test api restfull", () => {
 				image: "http//www.teste.com",
 			};
 			let response = await request("http://localhost:5000")
-				.post("/api/products/seed")
+				.post("/api/products")
 				.send(product);
 			expect(response.status).to.eql(200);
 
