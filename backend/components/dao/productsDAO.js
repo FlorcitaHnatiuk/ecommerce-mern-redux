@@ -1,11 +1,21 @@
-const ProductDTO = require("../../dto/productsDTO");
+import ProductDTO from "../dto/productsDTO";
 let instance = null;
 
-class DaoProductsMongoose extends MongooseContainer {
+class productsContainer {
 
-    async save(obj) {
-        let col = await this.schema.create(obj);
-        await col.save();
+    async save() {
+        try {
+            const products = [];
+            for (let i = 0; i < 10; i++) {
+                const product = new ProductDTO(
+                    console.log('not implemented')
+                );
+                products.push(product);
+            }
+            return products;
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     async getById(id) {
@@ -30,10 +40,12 @@ class DaoProductsMongoose extends MongooseContainer {
         );
     }
 
-    getInstance() {
-        if (!instance) instance = new DaoProductsMongoose()
-        return instance
+    static getInstance() {
+        if (!instance) {
+            instance = new productsContainer();
+        }
+        return instance;
     }
 }
 
-module.exports = DaoProductsMongoose;
+module.exports = productsContainer;
