@@ -15,14 +15,28 @@ import process from 'node:process';
 import logger from "./logger.js";
 import http from 'http';
 import { Server } from 'socket.io';
+import swaggerUi from 'swagger-ui-express';
+import swaggerJsdoc from 'swagger-jsdoc';
 
 dotenv.config();
+
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Express API with swagger",
+      description: "Express API with swagger"
+    },
+  },
+  apis: ['.docs/**/*yaml'],
+}
 const app = express();
 const numOfCpus = cpus().length
-app.use(compression());
-app.use(morgan('tiny'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+const specs = swaggerJsdoc(options);
+const __dirname = path.resolve();
+const httpServer = http.Server(app);
+const io = new Server(httpServer, { cors: { origin: '*' } });
+const users = [];
 
 mongoose.set('strictQuery', false)
 mongoose.connect(process.env.MONGODB_URI).then(() => {
@@ -31,10 +45,20 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
     logger.error('Cannot connect')
 })
 
+app.use(compression());
+app.use(morgan('tiny'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api/uploads', uploadRouter);
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
 app.use('/api/orders', orderRouter);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+app.use(express.static(path.join(__dirname, '/frontend/build')));
+app.use((err, req, res, next) => {
+    res.status(500).send({ message: err.message });
+});
 
 app.get('/api/config/paypal', (req, res) => {
     res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
@@ -42,13 +66,6 @@ app.get('/api/config/paypal', (req, res) => {
 app.get('/api/config/google', (req, res) => {
     res.send(process.env.GOOGLE_API_KEY || '');
 });
-app.use((err, req, res, next) => {
-    res.status(500).send({ message: err.message });
-});
-
-const __dirname = path.resolve();
-app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
-app.use(express.static(path.join(__dirname, '/frontend/build')));
 app.get('*', (req, res) =>
     res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
 );
@@ -79,10 +96,6 @@ if (cluster.isPrimary) {
         if (!err) { logger.info(`Worker on port ${port} - PID worker ${process.pid}`) }
     })
 }
-
-const httpServer = http.Server(app);
-const io = new Server(httpServer, { cors: { origin: '*' } });
-const users = [];
 
 io.on('connection', (socket) => {
   console.log('connection', socket.id);

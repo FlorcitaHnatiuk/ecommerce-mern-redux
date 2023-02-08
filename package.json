@@ -42,6 +42,9 @@
     "nodemailer": "^6.9.0",
     "socket.io": "^4.5.4",
     "supertest": "^6.3.3",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.0",
+    "swagger-ui-react": "^4.15.5",
     "twilio": "^3.84.1"
   },
   "devDependencies": {
