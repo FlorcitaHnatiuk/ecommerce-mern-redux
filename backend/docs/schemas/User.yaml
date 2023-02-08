@@ -1,0 +1,57 @@
+# User
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - id
+        - name
+        - email
+        - password
+        - isAdmin
+        - isSeller
+        - seller
+          - name
+          - logo
+          - description
+          - rating
+          - numReviews
+      properties:
+        id:
+          type: string
+          description: The auto-generated id of the product.
+        name:
+          type: string
+          description: The name of the user.
+        email:
+          type: number
+          description: The email of the user.
+        password: 
+          type: string
+          description: The password of the user.
+        isAdmin: 
+          type: boolean
+          description: Whether or not is admin.
+        isSeller: 
+          type: boolean
+          description: Whether or not is seller.
+        seller: 
+          name: 
+            type: string
+            description: The name of the seller.
+          logo: 
+            type: string
+            description: The logo of the seller.
+          description: 
+            type: string
+            description: The description of the seller.
+          rating: 
+            type: number
+            description: The rating of the seller.
+          numReviews:
+            type: number
+            description: The number of reviews.
+      example:
+        id: 4ughd73658fnsk85dh58sk
+        nombre: Agustina
+        apellido: Hnatiuk
