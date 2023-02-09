@@ -1,0 +1,36 @@
+components:
+  schemas:
+    orderItems:
+      type: object
+      required:
+        - name
+        - qty
+        - image
+        - price
+        - product
+      properties:
+    shippingAddress:
+      type: object
+      required:
+        - fullName
+        - address
+        - city
+        - postalCode
+        - country
+        - paymentMethod
+        - paymentResult
+        - itemsPrice
+        - shippingPrice
+        - taxPrice
+        - totalPrice
+        - user
+        - seller
+        - isPaid
+        - paidAt
+        - isDelivered
+        - deliveredAt
+      properties:
+      example:
+        id: 4ughd73658fnsk85dh58sk
+        nombre: Agustina
+        apellido: Hnatiuk
