@@ -1,0 +1,57 @@
+components:
+  requestBodies:
+    NewUser:
+      type: object
+      required:
+        - id
+        - name
+        - email
+        - password
+        - isAdmin
+        - isSeller
+        - seller
+          - name
+          - logo
+          - description
+          - rating
+          - numReviews
+      properties:
+        id:
+          type: string
+          description: The auto-generated id of the product.
+        name:
+          type: string
+          description: The name of the user.
+        email:
+          type: number
+          unique: true
+          description: The email of the user.
+        password: 
+          type: string
+          description: The password of the user.
+        isAdmin: 
+          type: boolean
+          default: false
+          description: Whether or not is admin.
+        isSeller: 
+          type: boolean
+          default: false
+          description: Whether or not is seller.
+        seller: 
+          name: 
+            type: string
+            description: The name of the seller.
+          logo: 
+            type: string
+            description: The logo of the seller.
+          description: 
+            type: string
+            description: The description of the seller.
+          rating: 
+            type: number
+            default: 0
+            description: The rating of the seller.
+          numReviews:
+            type: number
+            default: 0
+            description: The number of reviews.
