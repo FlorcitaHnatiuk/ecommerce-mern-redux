@@ -6,11 +6,17 @@ Aproveché la oportunidad para poder aplicar los conocimientos que adquirí dura
 ## Techs
 
 🛠️ HTML
+
 🛠️ CSS
+
 🛠️ JavaScript
+
 🛠️ ReacJS
+
 🛠️ Express
+
 🛠️ NodeJS
+
 🛠️ MongoDB
 
 ## Installation git clone
@@ -43,6 +49,7 @@ npm start
 ## Dependencies
 
 **Backend:**
+
 ⚡Axios
 
 ⚡Bcryptjs
@@ -88,6 +95,7 @@ npm start
 ⚡Swagger-ui-react
 
 **Frontend:**
+
 ⚡react-paypal-js
 
 ⚡react-google-maps/api
