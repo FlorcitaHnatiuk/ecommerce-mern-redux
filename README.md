@@ -121,9 +121,9 @@ npm start
 ⚡socket.io-client
 
 # El proyecto cuenta con...
-Perfil de *admin*.
+Perfil de *admin*, con un dashboard donde ver el flujo de usuarios, ventas y ordenes así como un diagrama de productos separado según las categorías.
 
 Perfiles de usuarios autorizados para usar la plataforma para vender sus productos como *seller*.
 
-Creación de perfil *user* para realizar las compras. 
+Creación de perfil *user* para realizar las compras. Como usuario podrás además hacer reviews de los productos y ver tu historial de compras, así como chequear el estado del envío.
 
