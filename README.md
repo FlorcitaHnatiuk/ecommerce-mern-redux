@@ -119,3 +119,11 @@ npm start
 ⚡redux-thunk
 
 ⚡socket.io-client
+
+# El proyecto cuenta con...
+Perfil de *admin*.
+
+Perfiles de usuarios autorizados para usar la plataforma para vender sus productos como *seller*.
+
+Creación de perfil *user* para realizar las compras. 
+
