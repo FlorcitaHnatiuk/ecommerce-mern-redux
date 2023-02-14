@@ -28,10 +28,11 @@ const options = {
       description: "Express API with swagger"
     },
   },
-  apis: ['.docs/**/*yaml'],
+  apis: ['./docs/**/*yaml'],
 }
 const app = express();
-const numOfCpus = cpus().length
+const numOfCpus = cpus().length;
+const swaggerSpecs = swaggerJsdoc(options);
 const specs = swaggerJsdoc(options);
 const __dirname = path.resolve();
 const httpServer = http.Server(app);

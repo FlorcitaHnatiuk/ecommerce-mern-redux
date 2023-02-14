@@ -15,7 +15,7 @@ export default function DashboardScreen() {
   return (
     <div>
       <div className="row">
-        <h1>Dashboard</h1>
+        <h1 className='text-center'>Dashboard</h1>
       </div>
       {loading ? (
         <LoadingBox />
@@ -58,7 +58,7 @@ export default function DashboardScreen() {
           </ul>
           <div>
             <div>
-              <h2>Sales</h2>
+              <h2 className='text-center'>Sales</h2>
               {summary.dailyOrders.length === 0 ? (
                 <MessageBox>No Sale</MessageBox>
               ) : (
@@ -76,7 +76,7 @@ export default function DashboardScreen() {
             </div>
           </div>
           <div>
-            <h2>Categories</h2>
+            <h2 className='text-center'>Categories</h2>
             {summary.productCategories.length === 0 ? (
               <MessageBox>No Category</MessageBox>
             ) : (
