@@ -123,7 +123,7 @@ npm start
 # El proyecto cuenta con...
 Perfil de *admin*, con un dashboard donde ver el flujo de usuarios, ventas y ordenes así como un diagrama de productos separado según las categorías.
 
-Perfiles de usuarios autorizados para usar la plataforma para vender sus productos como *seller*.
+Perfiles de usuarios autorizados para usar la plataforma para vender sus productos como *seller*. Podrán ver las ventas de sus productos, así como modificar la base de datos de sus productos.
 
 Creación de perfil *user* para realizar las compras. Como usuario podrás además hacer reviews de los productos y ver tu historial de compras, así como chequear el estado del envío.
 
