@@ -61,6 +61,7 @@ export default function SellerScreen(props) {
         )}
       </div>
       <div className="col-3">
+      <h1>Products</h1>
         {loadingProducts ? (
           <LoadingBox></LoadingBox>
         ) : errorProducts ? (
