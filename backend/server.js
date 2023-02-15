@@ -17,6 +17,7 @@ import http from 'http';
 import { Server } from 'socket.io';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJsdoc from 'swagger-jsdoc';
+//import GraphQLController from './controllers/GraphQLController.js';
 
 dotenv.config();
 
@@ -60,6 +61,7 @@ app.use(express.static(path.join(__dirname, '/frontend/build')));
 app.use((err, req, res, next) => {
     res.status(500).send({ message: err.message });
 });
+//app.use('/graphql', new GraphQLController());
 
 app.get('/api/config/paypal', (req, res) => {
     res.send(process.env.PAYPAL_CLIENT_ID || 'sb');

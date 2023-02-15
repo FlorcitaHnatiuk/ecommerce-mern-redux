@@ -1,0 +1,42 @@
+mutation {
+  createProduct(data: {
+        name: "Adidas Osweego",
+        seller: "Adidas",
+        image: String,
+        brand: "Adidas",
+        category: "Sneakers",
+        description: "lorem ipsum",
+        price: 130,
+        countInStock: 15,
+  }) {
+    id
+  }
+}
+
+query {
+  getProducts {
+    id
+    name
+    seller
+    image
+    brand
+    category
+    description
+    price
+    countInStock
+  }
+}
+
+mutation {
+  deleteProducts {
+    id
+    name
+    seller
+    image
+    brand
+    category
+    description
+    price
+    countInStock
+  }
+}
