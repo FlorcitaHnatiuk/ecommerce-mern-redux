@@ -14,6 +14,7 @@ export default function OrderHistoryScreen(props) {
   return (
     <div>
       <h1>Order History</h1>
+      <p className="text-center">These are the orders you made since you created the account</p>
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (

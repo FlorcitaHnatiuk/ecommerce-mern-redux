@@ -15,26 +15,11 @@ import process from 'node:process';
 import logger from "./logger.js";
 import http from 'http';
 import { Server } from 'socket.io';
-import swaggerUi from 'swagger-ui-express';
-import swaggerJsdoc from 'swagger-jsdoc';
-//import GraphQLController from './controllers/GraphQLController.js';
 
 dotenv.config();
 
-const options = {
-  definition: {
-    openapi: "3.0.0",
-    info: {
-      title: "Express API with swagger",
-      description: "Express API with swagger"
-    },
-  },
-  apis: ['./docs/**/*yaml'],
-}
 const app = express();
 const numOfCpus = cpus().length;
-const swaggerSpecs = swaggerJsdoc(options);
-const specs = swaggerJsdoc(options);
 const __dirname = path.resolve();
 const httpServer = http.Server(app);
 const io = new Server(httpServer, { cors: { origin: '*' } });
@@ -55,13 +40,11 @@ app.use('/api/uploads', uploadRouter);
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
 app.use('/api/orders', orderRouter);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 app.use(express.static(path.join(__dirname, '/frontend/build')));
 app.use((err, req, res, next) => {
     res.status(500).send({ message: err.message });
 });
-//app.use('/graphql', new GraphQLController());
 
 app.get('/api/config/paypal', (req, res) => {
     res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
