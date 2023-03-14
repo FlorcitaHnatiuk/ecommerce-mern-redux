@@ -46,6 +46,26 @@ npm install
 npm start
 ```
 
+## Setup MongoDB
+
+### Local MongoDB
+Crea un archivo .env en el root
+Set MONGODB_URL=mongodb://localhost/moov
+### Atlas Cloud MongoDB
+Crea DB en https://cloud.mongodb.com
+Crea archivo .env en el root
+Setear MONGODB_URL=mongodb+srv://your-db-connection
+
+## Seed Users and Products
+Correr en chrome: http://localhost:5000/api/users/seed
+Esto devuelve un admin, email y password
+Correr en chrome: http://localhost:5000/api/products/seed
+Esto crea 6 productos base
+
+## Admin Login
+Correr http://localhost:3000/signin
+Ingresá admin email y password y clickea en signin
+
 ## Dependencies
 
 **Backend:**
