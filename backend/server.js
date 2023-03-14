@@ -63,25 +63,7 @@ process.on('SIGINT', function () {
     });
 });
 
-if (cluster.isPrimary) {
-    logger.info(`CPUs: ${numOfCpus}`)
-    logger.info(`Primary ${process.pid} is running`)
-    for (let i = 0; i < numOfCpus; i++) {
-        cluster.fork();
-    }
-    cluster.on('exit', (worker) => {
-        logger.warn(`Worker ${worker.process.pid} died`, new Date().toLocaleString())
-        cluster.fork()
-    })
-} else {
-    const port = (process.env.PORT || 5000)
-    app.get('/', (req, res) => {
-        res.send(`Worker on port ${port} - <b>PID ${process.pid}</b> - ${new Date().toLocaleString()}`)
-    })
-    app.listen(port, err => {
-        if (!err) { logger.info(`Worker on port ${port} - PID worker ${process.pid}`) }
-    })
-}
+
 
 io.on('connection', (socket) => {
   console.log('connection', socket.id);
@@ -150,3 +132,23 @@ io.on('connection', (socket) => {
     }
   });
 });
+
+if (cluster.isPrimary) {
+  logger.info(`CPUs: ${numOfCpus}`)
+  logger.info(`Primary ${process.pid} is running`)
+  for (let i = 0; i < numOfCpus; i++) {
+      cluster.fork();
+  }
+  cluster.on('exit', (worker) => {
+      logger.warn(`Worker ${worker.process.pid} died`, new Date().toLocaleString())
+      cluster.fork()
+  })
+} else {
+  const port = (process.env.PORT || 5000)
+  app.get('/', (req, res) => {
+      res.send(`Worker on port ${port} - <b>PID ${process.pid}</b> - ${new Date().toLocaleString()}`)
+  })
+  httpServer.listen(port, err => {
+      if (!err) { logger.info(`Worker on port ${port} - PID worker ${process.pid}`) }
+  })
+}
